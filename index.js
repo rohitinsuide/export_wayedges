@@ -1,6 +1,18 @@
 "use strict";
 
 
+const yargs = require("yargs");
+
+const argv = yargs
+        .option('appName', {
+            alias: 'a',
+            demandOption: true,
+            describe: 'Appname to perform action on',
+            type: 'string'
+        })
+        .argv;
+
+
 const { MongoClient } = require('mongodb'),
       { writeFileSync } = require('fs');
 
@@ -13,7 +25,7 @@ async function main() {
     console.log('Connected successfully to mongo');
     const collection = client.db('insuide').collection('wayedges');
     
-    const wayedges = await collection.find({appname:'bud'}).toArray();
+    const wayedges = await collection.find({appname:argv.appName}).toArray();
     
     console.log(`Going to process ${wayedges.length} line-data`);
 

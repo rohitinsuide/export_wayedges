@@ -13,6 +13,7 @@
   "author": "Rohit Nair",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^4.1.1"
+    "mongodb": "^4.1.1",
+    "yargs": "^17.1.1"
   }
 }

@@ -9,7 +9,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/rohitinsuide/export_wayedges.git"
-},
+  },
   "author": "Rohit Nair",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^4.1.1"
+  }
 }

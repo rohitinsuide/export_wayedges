@@ -7,7 +7,7 @@ const argv = yargs
         .option('appName', {
             alias: 'a',
             demandOption: true,
-            describe: 'Appname to perform action on',
+            describe: 'Appname to export route data for',
             type: 'string'
         })
         .argv;
@@ -53,11 +53,4 @@ async function main() {
   .then(console.log)
   .catch(console.error)
   .finally(() => client.close());
-
-
-// 
-
-// 
-
-
-
+  

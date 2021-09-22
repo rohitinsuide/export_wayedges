@@ -20,6 +20,11 @@ const { MongoClient } = require('mongodb'),
 const client = new MongoClient('mongodb://localhost:27017');
 
 
+const restrictedLines = [
+    {from_point_name:'A-576', to_point_name:'A-577'}
+];
+
+
 async function main() {
     await client.connect();
     console.log('Connected successfully to mongo');
@@ -43,11 +48,13 @@ async function main() {
 
     for(let i = 0; i < wayedges.length; i++){
 
-        const { _id, from_point, to_point } = wayedges[i];
+        const { _id, from_point, to_point, from_point_name, to_point_name } = wayedges[i];
         
-        const isLineBi = wayedges.find( elem => elem.from_point === to_point && elem.to_point === from_point );
+        const biDirectional = wayedges.some( elem => elem.from_point === to_point && elem.to_point === from_point );
 
-        const body = { _id, from_point, to_point, biDirectional: isLineBi ? true : false };
+        const isRestricted = restrictedLines.some( elem => elem.from_point_name === from_point_name && elem.to_point_name === to_point_name );
+
+        const body = { _id, from_point, to_point, biDirectional, isRestricted };
 
         result.edges.push(body);
 

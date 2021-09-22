@@ -49,6 +49,8 @@ async function main() {
     for(let i = 0; i < wayedges.length; i++){
 
         const { _id, from_point, to_point, from_point_name, to_point_name } = wayedges[i];
+
+        console.log(from_point_name, to_point_name);
         
         const biDirectional = wayedges.some( elem => elem.from_point === to_point && elem.to_point === from_point );
 

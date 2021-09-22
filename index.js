@@ -52,7 +52,15 @@ async function main() {
         
         const biDirectional = wayedges.some( elem => elem.from_point === to_point && elem.to_point === from_point );
 
-        const isRestricted = restrictedLines.some( elem => elem.from_point_name === from_point_name && elem.to_point_name === to_point_name );
+        const isRestricted = restrictedLines.some( elem => {
+            if(elem.from_point_name === from_point_name && elem.to_point_name === to_point_name){
+                console.log('THIS LINE IS RESTRICTED');
+                return true;
+            }
+            else{
+                return false;
+            }
+        } );
 
         const body = { _id, from_point, to_point, biDirectional, isRestricted };
 

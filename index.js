@@ -21,9 +21,12 @@ const client = new MongoClient('mongodb://localhost:27017');
 
 
 const restrictedLines = [
-    {from_point_name:'A-578', to_point_name:'A-579'},
-    {from_point_name:'A-398', to_point_name:'A-576'},
-    {from_point_name:'A-402', to_point_name:'A-574'}
+    { from_point_name:'A-578', to_point_name:'A-579' },
+    { from_point_name:'A-398', to_point_name:'A-576' },
+    { from_point_name:'A-402', to_point_name:'A-574' },
+    { from_point_name:'A-74', to_point_name:'A-193' },
+    { from_point_name:'A-185', to_point_name:'A-186' },
+    { from_point_name:'A-577', to_point_name:'A-576' },
 ];
 
 async function main() {
@@ -67,7 +70,7 @@ async function main() {
 
         const {_id, lat, level, lng, terminal} = waypoints[i];
 
-        result.markers.push({_id, lat, level, lng, terminal});
+        result.markers.push({ _id, lat, level, lng, terminal });
 
     }
 
@@ -81,7 +84,7 @@ async function main() {
   }
 
 
-  main()
+main()
   .then(console.log)
   .catch(console.error)
   .finally(() => client.close());
